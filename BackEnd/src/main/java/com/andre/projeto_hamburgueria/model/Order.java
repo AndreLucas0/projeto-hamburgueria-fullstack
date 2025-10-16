@@ -10,6 +10,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -29,15 +31,17 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     @Column(nullable = false)
     @NotBlank(message = "Status can not be blank.")
     private String status; //substituir por OrderStatus
     @Column(nullable = false)
-    @NotBlank(message = "Total amount can not be blank.")
+    @NotNull(message = "Total amount can not be empty.")
     private Double totalAmount;
+    @Column(name = "user_id")
     private String user; //substituir por User
     @Column(nullable = false)
-    @NotBlank(message = "Items can not be blank.")
+    @NotNull(message = "Items can not be null.")
     private List<Long> items; //substituir por OrderItem
 
 }

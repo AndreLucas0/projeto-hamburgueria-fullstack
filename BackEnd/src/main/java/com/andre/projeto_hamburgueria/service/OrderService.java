@@ -1,5 +1,6 @@
 package com.andre.projeto_hamburgueria.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ public class OrderService {
     }
 
     public Order save(Order order) {
+        order.setCreatedAt(LocalDateTime.now());
+        order.setUpdatedAt(LocalDateTime.now());
         Order orderSaved = orderRepository.save(order);
         return orderSaved;
     }

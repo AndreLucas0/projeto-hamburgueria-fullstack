@@ -1,2 +1,11 @@
 <p>orders-list works!</p>
 <app-primary-button [action]="getString" (onClick)="handleResult($event)"> Criar pedido</app-primary-button>
+
+<div *ngFor="let order of orders">
+    <p>{{order.id}}</p>
+    <p>{{order.user}}</p>
+    <p>{{order.createdAt}}</p>
+    <p>{{order.updatedAt}}</p>
+    <p>{{order.items}}</p>
+    <p>{{order.status}}</p>
+</div>
